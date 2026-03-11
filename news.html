@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News – Rohrbacher Holzwerkstätte Becker GmbH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1628;--navy-2:#0E1E36;--navy-3:#162840;--blue:#1A3560;--gold:#B8933F;--gold-light:#D4AF6A;--gold-pale:#E8D5A3;--cream:#F7F4EE;--cream-2:#EDE8DF;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D4A5C;--border:rgba(184,147,63,0.2);--border-soft:rgba(255,255,255,0.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;transition:background .4s}
+nav.scrolled{background:rgba(10,22,40,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:72px}
+.nav-logo{display:flex;flex-direction:column;gap:1px;text-decoration:none}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);letter-spacing:.08em;line-height:1}
+.nav-logo-sub{font-size:.55rem;color:var(--gold-light);letter-spacing:.22em;text-transform:uppercase}
+.nav-links{display:flex;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.72rem;font-weight:500;padding:.45rem .9rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:2px;left:.9rem;right:.9rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
+.nav-cta{background:transparent!important;border:1px solid var(--gold);color:var(--gold-light)!important;padding:.5rem 1.2rem!important;border-radius:2px}.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:100%;height:1.5px;background:#fff;border-radius:1px;transition:all .35s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--navy);flex-direction:column;justify-content:center;padding:3rem 2.5rem}
+.mobile-overlay.open{display:flex}
+.mobile-overlay a{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,7vw,3rem);font-weight:300;color:rgba(255,255,255,.5);text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s}
+.mobile-overlay a:hover,.mobile-overlay a.active{color:#fff}
+.mobile-overlay-foot{margin-top:2rem;font-size:.75rem;color:rgba(255,255,255,.25);letter-spacing:.1em}
+.page-hero{padding:9rem 2.5rem 5rem;background:var(--navy);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(74,127,193,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,127,193,.04) 1px,transparent 1px);background-size:60px 60px}
+.ph-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+.eyebrow-line{width:30px;height:1px;background:var(--gold)}
+.eyebrow span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:#fff;letter-spacing:-.01em;line-height:1.1;margin-bottom:1rem;animation:fadeUp .8s .1s ease both}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.5);max-width:540px;line-height:1.75;animation:fadeUp .8s .2s ease both}
+.ph-line{width:40px;height:1px;background:var(--gold);margin-top:2rem;animation:fadeUp .8s .3s ease both}
+
+/* NEWS PLACEHOLDER */
+.news-wrap{max-width:860px;margin:0 auto;padding:6rem 2.5rem}
+.news-empty{border:1px solid rgba(26,53,96,.12);background:var(--white);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.news-empty::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border:1px solid var(--border);border-radius:50%;opacity:.4}
+.news-empty::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border:1px solid var(--border);border-radius:50%;opacity:.2}
+.ne-icon{font-size:2.5rem;margin-bottom:1.5rem;display:block}
+.news-empty h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--navy);margin-bottom:.75rem;letter-spacing:-.01em}
+.news-empty p{font-size:.9rem;color:var(--text-mid);line-height:1.75;max-width:400px;margin:0 auto 2rem}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2.4rem;border-radius:2px;text-decoration:none;display:inline-block;transition:all .25s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.stay-tuned{margin-top:2rem;padding:2.5rem 3rem;background:var(--cream-2);border:1px solid rgba(26,53,96,.08);text-align:center}
+.stay-tuned h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:.6rem}
+.stay-tuned p{font-size:.88rem;color:var(--text-mid);line-height:1.65}
+
+/* CONTACT */
+.contact{background:var(--navy);padding:6rem 0}
+.contact-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem}
+.contact-hdr{text-align:center;margin-bottom:4rem}
+.contact-hdr h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:#fff;letter-spacing:-.01em;margin-bottom:.75rem}
+.contact-hdr p{font-size:.85rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.ccard{background:var(--navy-2);padding:3rem 2.5rem;text-align:center;transition:background .2s}
+.ccard:hover{background:var(--navy-3)}
+.ccard-icon{width:48px;height:48px;margin:0 auto 1.25rem;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ccard h4{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.ccard p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.75}
+.ccard a{color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}.ccard a:hover{color:var(--gold-light)}
+.ccard .hours{font-size:.72rem;color:rgba(255,255,255,.28);margin-top:.35rem}
+footer{background:var(--navy-2);border-top:1px solid var(--border-soft);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:rgba(255,255,255,.28);letter-spacing:.08em}
+.foot-links{display:flex;gap:2rem}
+.foot-links a{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}.foot-links a:hover{color:var(--gold-light)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.page-hero,.news-wrap,.contact-inner{padding-left:1.5rem;padding-right:1.5rem}.contact-grid{grid-template-columns:1fr}.news-empty,.stay-tuned{padding:3rem 1.5rem}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="startseite.html" class="nav-logo"><span class="nav-logo-main">RHW Becker GmbH</span><span class="nav-logo-sub">Rohrbacher Holzwerkstätte</span></a>
+    <ul class="nav-links">
+      <li><a href="startseite.html">Startseite</a></li><li><a href="leistungen.html">Leistungen</a></li><li><a href="projekte.html">Projekte</a></li><li><a href="dienstleistungen.html">Dienstleistungen</a></li><li><a href="cnc.html">CNC</a></li><li><a href="news.html" class="active">News</a></li>
+      <li><a href="tel:062213315731" class="nav-cta">Anrufen</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="startseite.html">Startseite</a><a href="leistungen.html">Leistungen</a><a href="projekte.html">Projekte</a><a href="dienstleistungen.html">Dienstleistungen</a><a href="cnc.html">CNC</a><a href="news.html" class="active">News</a>
+  <div class="mobile-overlay-foot">06221 – 315731 · info@rhw-becker.de</div>
+</div>
+
+<section class="page-hero">
+  <div class="ph-inner">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span>Aktuelles aus der Werkstatt</span></div>
+    <h1>News</h1>
+    <p>Neuigkeiten, Projekte und Wissenswertes rund um die Rohrbacher Holzwerkstätte Becker GmbH.</p>
+    <div class="ph-line"></div>
+  </div>
+</section>
+
+<div class="news-wrap">
+  <div class="news-empty reveal">
+    <span class="ne-icon">🪵</span>
+    <h2>Bald gibt es Neuigkeiten</h2>
+    <p>Wir arbeiten gerade an spannenden Projekten – schauen Sie bald wieder vorbei oder nehmen Sie direkt Kontakt auf.</p>
+    <a href="projekte.html" class="btn-gold">Unsere Projekte ansehen</a>
+  </div>
+  <div class="stay-tuned reveal rd2">
+    <h3>Bleiben Sie in Kontakt</h3>
+    <p>Für aktuelle Informationen rufen Sie uns gerne an unter <strong>06221 – 315731</strong> oder schreiben Sie uns eine E-Mail an <strong>info@rhw-becker.de</strong></p>
+  </div>
+</div>
+
+<section class="contact" id="kontakt">
+  <div class="contact-inner">
+    <div class="contact-hdr reveal"><h2>Kontakt aufnehmen</h2><p>Wir freuen uns auf Ihre Anfrage</p></div>
+    <div class="contact-grid">
+      <div class="ccard reveal rd1"><div class="ccard-icon">📞</div><h4>Telefon</h4><p><a href="tel:062213315731">06221 – 315731</a><br><span class="hours">Mo–Do 7–16 Uhr · Fr 7–13:45 Uhr</span></p></div>
+      <div class="ccard reveal rd2"><div class="ccard-icon">📍</div><h4>Adresse</h4><p><a href="https://maps.google.com/?q=Brechtelstraße+15+69126+Heidelberg" target="_blank" rel="noopener">Brechtelstraße 15<br>69126 Heidelberg</a></p></div>
+      <div class="ccard reveal rd3"><div class="ccard-icon">✉️</div><h4>E-Mail</h4><p><a href="mailto:info@rhw-becker.de">info@rhw-becker.de</a></p></div>
+    </div>
+  </div>
+</section>
+<footer><span class="foot-brand">© 2025 Rohrbacher Holzwerkstätte Becker GmbH</span><div class="foot-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Kontakt</a></div></footer>
+<script>
+const nav=document.getElementById("nav");
+window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>60),{passive:true});
+const hbg=document.getElementById("hamburger"),mo=document.getElementById("mobileOverlay");
+hbg.addEventListener("click",()=>{const o=hbg.classList.toggle("open");mo.classList.toggle("open",o);document.body.style.overflow=o?"hidden":""});
+mo.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{hbg.classList.remove("open");mo.classList.remove("open");document.body.style.overflow=""}));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");ro.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

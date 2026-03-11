@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC – Rohrbacher Holzwerkstätte Becker GmbH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1628;--navy-2:#0E1E36;--navy-3:#162840;--blue:#1A3560;--steel:#2A4F8A;--gold:#B8933F;--gold-light:#D4AF6A;--gold-pale:#E8D5A3;--cream:#F7F4EE;--cream-2:#EDE8DF;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D4A5C;--border:rgba(184,147,63,0.2);--border-soft:rgba(255,255,255,0.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;transition:background .4s}
+nav.scrolled{background:rgba(10,22,40,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:72px}
+.nav-logo{display:flex;flex-direction:column;gap:1px;text-decoration:none}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);letter-spacing:.08em;line-height:1}
+.nav-logo-sub{font-size:.55rem;color:var(--gold-light);letter-spacing:.22em;text-transform:uppercase}
+.nav-links{display:flex;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.72rem;font-weight:500;padding:.45rem .9rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:2px;left:.9rem;right:.9rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:#fff}
+.nav-cta{background:transparent!important;border:1px solid var(--gold);color:var(--gold-light)!important;padding:.5rem 1.2rem!important;border-radius:2px}.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:100%;height:1.5px;background:#fff;border-radius:1px;transition:all .35s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--navy);flex-direction:column;justify-content:center;padding:3rem 2.5rem}
+.mobile-overlay.open{display:flex}
+.mobile-overlay a{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,7vw,3rem);font-weight:300;color:rgba(255,255,255,.5);text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s}
+.mobile-overlay a:hover,.mobile-overlay a.active{color:#fff}
+.mobile-overlay-foot{margin-top:2rem;font-size:.75rem;color:rgba(255,255,255,.25);letter-spacing:.1em}
+
+/* HERO with grid bg */
+.page-hero{min-height:60vh;padding:9rem 2.5rem 6rem;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(74,127,193,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,127,193,.04) 1px,transparent 1px);background-size:60px 60px}
+.ph-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+.eyebrow-line{width:30px;height:1px;background:var(--gold)}
+.eyebrow span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:#fff;letter-spacing:-.01em;line-height:1.1;margin-bottom:1rem;animation:fadeUp .8s .1s ease both}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;animation:fadeUp .8s .2s ease both}
+.ph-line{width:40px;height:1px;background:var(--gold);margin-top:2rem;animation:fadeUp .8s .3s ease both}
+.hero-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);animation:fadeUp .8s .3s ease both;align-self:end}
+.spec-box{background:rgba(255,255,255,.04);padding:1.5rem;border-bottom:2px solid transparent;transition:border-color .2s}
+.spec-box:hover{border-color:var(--gold)}
+.spec-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem}
+.spec-value{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--gold-pale);line-height:1}
+
+/* INTRO */
+.cnc-intro{max-width:1280px;margin:0 auto;padding:6rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ci-label{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.ci-label-line{width:30px;height:1px;background:var(--gold)}
+.ci-label span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ci-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;color:var(--navy);line-height:1.2;margin-bottom:1.25rem;letter-spacing:-.01em}
+.ci-text h2 em{font-style:italic;color:var(--steel)}
+.ci-text p{font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.25rem}
+.ci-badges{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
+.ci-badge{border:1px solid var(--border);color:var(--gold);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:2px}
+
+/* CAPABILITIES */
+.caps{background:var(--navy);padding:6rem 0;position:relative;overflow:hidden}
+.caps::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(74,127,193,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(74,127,193,.03) 1px,transparent 1px);background-size:60px 60px}
+.caps-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem;position:relative;z-index:1}
+.c-header{margin-bottom:4rem}
+.c-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.c-eyebrow-line{width:30px;height:1px;background:var(--gold)}
+.c-eyebrow span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.c-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:#fff;letter-spacing:-.01em}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.cap-item{background:var(--navy-2);padding:2.5rem 2rem;transition:background .2s;position:relative}
+.cap-item:hover{background:var(--navy-3)}
+.cap-item::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.cap-item:hover::after{transform:scaleX(1)}
+.cap-icon{font-size:1.5rem;margin-bottom:1rem}
+.cap-item h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:#fff;margin-bottom:.6rem}
+.cap-item p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.65}
+
+/* CONTACT */
+.contact{background:var(--cream-2);padding:6rem 0}
+.contact-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem}
+.contact-hdr{text-align:center;margin-bottom:4rem}
+.contact-hdr h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--navy);letter-spacing:-.01em;margin-bottom:.75rem}
+.contact-hdr p{font-size:.85rem;color:var(--text-mid);letter-spacing:.1em;text-transform:uppercase}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.ccard{background:var(--white);padding:3rem 2.5rem;text-align:center;border:1px solid rgba(26,53,96,.1);border-radius:2px;transition:box-shadow .25s}
+.ccard:hover{box-shadow:0 12px 40px rgba(10,22,40,.1)}
+.ccard-icon{width:48px;height:48px;margin:0 auto 1.25rem;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ccard h4{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.ccard p{color:var(--text-mid);font-size:.9rem;line-height:1.75}
+.ccard a{color:var(--text-mid);text-decoration:none;transition:color .2s}.ccard a:hover{color:var(--gold)}
+.ccard .hours{font-size:.72rem;color:var(--text-mid);margin-top:.35rem}
+footer{background:var(--navy-2);border-top:1px solid var(--border-soft);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:rgba(255,255,255,.28);letter-spacing:.08em}
+.foot-links{display:flex;gap:2rem}
+.foot-links a{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}.foot-links a:hover{color:var(--gold-light)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}
+@media(max-width:1024px){.cap-grid{grid-template-columns:repeat(2,1fr)}.ph-inner{grid-template-columns:1fr}.hero-specs{display:none}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.page-hero{padding:8rem 1.5rem 4rem;min-height:auto}.cnc-intro{grid-template-columns:1fr;padding:4rem 1.5rem}.caps-inner,.contact-inner{padding-left:1.5rem;padding-right:1.5rem}.contact-grid{grid-template-columns:1fr}.cap-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="startseite.html" class="nav-logo"><span class="nav-logo-main">RHW Becker GmbH</span><span class="nav-logo-sub">Rohrbacher Holzwerkstätte</span></a>
+    <ul class="nav-links">
+      <li><a href="startseite.html">Startseite</a></li><li><a href="leistungen.html">Leistungen</a></li><li><a href="projekte.html">Projekte</a></li><li><a href="dienstleistungen.html">Dienstleistungen</a></li><li><a href="cnc.html" class="active">CNC</a></li><li><a href="news.html">News</a></li>
+      <li><a href="tel:062213315731" class="nav-cta">Anrufen</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="startseite.html">Startseite</a><a href="leistungen.html">Leistungen</a><a href="projekte.html">Projekte</a><a href="dienstleistungen.html">Dienstleistungen</a><a href="cnc.html" class="active">CNC</a><a href="news.html">News</a>
+  <div class="mobile-overlay-foot">06221 – 315731 · info@rhw-becker.de</div>
+</div>
+
+<section class="page-hero">
+  <div class="ph-inner">
+    <div>
+      <div class="eyebrow"><div class="eyebrow-line"></div><span>Seit 2014 · Computergesteuerte Fertigung</span></div>
+      <h1>CNC-Bearbeitungs&shy;zentrum</h1>
+      <p>Modernste computergesteuerte Fertigung für höchste Präzision – seit 2014 Teil unserer Tischlerei und offen für externe Auftragsarbeiten.</p>
+      <div class="ph-line"></div>
+    </div>
+    <div class="hero-specs">
+      <div class="spec-box"><div class="spec-label">In Betrieb seit</div><div class="spec-value">2014</div></div>
+      <div class="spec-box"><div class="spec-label">Steuerung</div><div class="spec-value">CNC</div></div>
+      <div class="spec-box"><div class="spec-label">Material</div><div class="spec-value">Holz</div></div>
+      <div class="spec-box"><div class="spec-label">Anfragen</div><div class="spec-value">Offen</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cnc-intro">
+  <div class="ci-text reveal">
+    <div class="ci-label"><div class="ci-label-line"></div><span>Präzision &amp; Handwerk</span></div>
+    <h2>Wo <em>Technik</em><br>auf Handwerk trifft</h2>
+    <p>Seit der Installation unseres CNC-Bearbeitungszentrums im Jahr 2014 können wir komplexe Formen, Fräsungen und Bearbeitungen mit höchster Wiederholgenauigkeit umsetzen – die perfekte Ergänzung zu unserem traditionellen Tischlerhandwerk.</p>
+    <p>Ob filigrane Ornamente, exakte Passgenauigkeit bei Serienfertigung oder individuelle Sonderlösungen – wir freuen uns auch auf Anfragen externer Partner.</p>
+    <div class="ci-badges">
+      <span class="ci-badge">Serienfertigung</span>
+      <span class="ci-badge">Einzelstücke</span>
+      <span class="ci-badge">Auftragsarbeiten</span>
+    </div>
+  </div>
+  <div class="reveal rd2">
+    <!-- decorative technical diagram -->
+    <div style="background:var(--navy);padding:3rem;border:1px solid var(--border-soft);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(74,127,193,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,127,193,.06) 1px,transparent 1px);background-size:30px 30px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">Fertigungsprozess</div>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="width:28px;height:28px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;font-family:'Cormorant Garamond',serif">1</div>
+            <div>
+              <div style="font-size:.8rem;font-weight:500;color:#fff">Planung &amp; Konstruktion</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.35)">CAD-Zeichnung &amp; Programmierung</div>
+            </div>
+          </div>
+          <div style="width:1px;height:20px;background:var(--border);margin-left:14px"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="width:28px;height:28px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;font-family:'Cormorant Garamond',serif">2</div>
+            <div>
+              <div style="font-size:.8rem;font-weight:500;color:#fff">CNC-Bearbeitung</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.35)">Präzise Fräsung &amp; Formgebung</div>
+            </div>
+          </div>
+          <div style="width:1px;height:20px;background:var(--border);margin-left:14px"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="width:28px;height:28px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;font-family:'Cormorant Garamond',serif">3</div>
+            <div>
+              <div style="font-size:.8rem;font-weight:500;color:#fff">Handwerkliche Veredelung</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.35)">Schleifen, Finish, Montage</div>
+            </div>
+          </div>
+          <div style="width:1px;height:20px;background:var(--border);margin-left:14px"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="width:28px;height:28px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--navy);flex-shrink:0;font-weight:700;font-family:'Cormorant Garamond',serif">✓</div>
+            <div>
+              <div style="font-size:.8rem;font-weight:500;color:var(--gold-light)">Qualitätskontrolle &amp; Übergabe</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.35)">100% Passgenauigkeit geprüft</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="caps">
+  <div class="caps-inner">
+    <div class="c-header reveal">
+      <div class="c-eyebrow"><div class="c-eyebrow-line"></div><span>Fertigungsspektrum</span></div>
+      <div class="c-title">Was wir fertigen können</div>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-item reveal rd1"><div class="cap-icon">⬜</div><h4>Fräsarbeiten</h4><p>Präzise Fräsungen in verschiedenen Tiefen, Formen und Profilen</p></div>
+      <div class="cap-item reveal rd2"><div class="cap-icon">🔣</div><h4>Ornamente &amp; Dekor</h4><p>Filigranes Dekor und komplexe Muster mit höchster Detailgenauigkeit</p></div>
+      <div class="cap-item reveal rd3"><div class="cap-icon">📐</div><h4>Serienteile</h4><p>Höchste Wiederholgenauigkeit – ideal für größere Serien</p></div>
+      <div class="cap-item reveal rd1"><div class="cap-icon">🪟</div><h4>Türen &amp; Fensterteile</h4><p>Passgenaue Rahmen- und Elementteile für jede Dimension</p></div>
+      <div class="cap-item reveal rd2"><div class="cap-icon">🗂️</div><h4>Möbelteile</h4><p>Serienteile für Einbauschränke, Küchen und individuelle Möbel</p></div>
+      <div class="cap-item reveal rd3"><div class="cap-icon">🤝</div><h4>Auftragsarbeiten</h4><p>Wir fertigen auch für externe Tischlereien und Gewerbebetriebe</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="contact-inner">
+    <div class="contact-hdr reveal"><h2>CNC-Anfrage stellen</h2><p>Wir freuen uns auf Ihr Projekt</p></div>
+    <div class="contact-grid">
+      <div class="ccard reveal rd1"><div class="ccard-icon">📞</div><h4>Telefon</h4><p><a href="tel:062213315731">06221 – 315731</a><br><span class="hours">Mo–Do 7–16 Uhr · Fr 7–13:45 Uhr</span></p></div>
+      <div class="ccard reveal rd2"><div class="ccard-icon">📍</div><h4>Adresse</h4><p><a href="https://maps.google.com/?q=Brechtelstraße+15+69126+Heidelberg" target="_blank" rel="noopener">Brechtelstraße 15<br>69126 Heidelberg</a></p></div>
+      <div class="ccard reveal rd3"><div class="ccard-icon">✉️</div><h4>E-Mail</h4><p><a href="mailto:info@rhw-becker.de">info@rhw-becker.de</a></p></div>
+    </div>
+  </div>
+</section>
+<footer><span class="foot-brand">© 2025 Rohrbacher Holzwerkstätte Becker GmbH</span><div class="foot-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Kontakt</a></div></footer>
+<script>
+const nav=document.getElementById("nav");
+window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>60),{passive:true});
+const hbg=document.getElementById("hamburger"),mo=document.getElementById("mobileOverlay");
+hbg.addEventListener("click",()=>{const o=hbg.classList.toggle("open");mo.classList.toggle("open",o);document.body.style.overflow=o?"hidden":""});
+mo.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{hbg.classList.remove("open");mo.classList.remove("open");document.body.style.overflow=""}));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");ro.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
