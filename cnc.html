@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNC – Rohrbacher Holzwerkstätte Becker GmbH</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1E40AF;--blue-dark:#1E3A8A;--blue-mid:#2563EB;--blue-light:#3B82F6;--navy:#0F172A;--navy-mid:#1E293B;--cream:#F0F4FF;--cream-dark:#E0E9FF;--accent:#F59E0B;--accent-light:#FCD34D;--text:#0F172A;--text-light:#475569;--white:#ffffff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+nav{background:var(--navy);padding:0 2rem;position:sticky;top:0;z-index:300;box-shadow:0 2px 24px rgba(0,0,0,.4)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:.15rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.8rem;padding:.4rem .7rem;border-radius:4px;transition:all .2s;text-transform:uppercase;letter-spacing:.04em}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-links a.active{color:var(--accent);background:rgba(245,158,11,.15)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:100%;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:64px 0 0 0;background:var(--navy-mid);z-index:299;flex-direction:column;padding:1.5rem;gap:.5rem;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:rgba(255,255,255,.82);text-decoration:none;font-size:1rem;padding:.9rem 1.2rem;border-radius:8px;transition:all .2s;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--accent);background:rgba(245,158,11,.1)}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue-dark) 50%,var(--blue-mid) 100%);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px)}
+.hero-badge{display:inline-block;background:rgba(245,158,11,.18);border:1px solid rgba(245,158,11,.55);color:var(--accent-light);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:.45rem 1.4rem;border-radius:2rem;margin-bottom:1.5rem;animation:fadeUp .7s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;color:#fff;animation:fadeUp .7s .1s ease both;margin-bottom:1rem;line-height:1.1}
+.hero p{font-size:1rem;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;line-height:1.65;animation:fadeUp .7s .2s ease both}
+.hero-line{width:50px;height:3px;background:var(--accent);margin:1.5rem auto 0;border-radius:2px}
+.cnc-intro{max-width:1100px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.cnc-intro-text h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--blue-dark);margin-bottom:1.25rem}
+.cnc-intro-text p{color:var(--text-light);line-height:1.8;font-size:.95rem;margin-bottom:1rem}
+.cnc-badge-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.cnc-badge{background:var(--blue-dark);color:var(--accent-light);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border-radius:2rem}
+.cnc-specs{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.spec-card{background:var(--white);border:1px solid rgba(30,64,175,.1);border-radius:10px;padding:1.25rem 1.5rem;border-left:3px solid var(--accent)}
+.spec-card .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-bottom:.35rem}
+.spec-card .value{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--blue-dark)}
+.capabilities{background:var(--navy-mid);padding:4rem 2rem}
+.cap-inner{max-width:1100px;margin:0 auto}
+.cap-inner h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:.5rem}
+.cap-inner .sub{color:rgba(255,255,255,.5);font-size:.88rem;margin-bottom:2.5rem}
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.cap-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:1.5rem;transition:background .2s}
+.cap-card:hover{background:rgba(255,255,255,.1)}
+.cap-card .icon{font-size:1.6rem;margin-bottom:.75rem}
+.cap-card h4{color:#fff;font-size:.9rem;font-weight:600;margin-bottom:.35rem}
+.cap-card p{color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.5}
+.contact-section{background:var(--cream-dark);padding:4rem 2rem}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.contact-headline{grid-column:1/-1;text-align:center;margin-bottom:.5rem}
+.contact-headline h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--blue-dark);margin-bottom:.3rem}
+.contact-headline p{color:var(--text-light);font-size:.9rem}
+.contact-card{background:var(--white);border:1px solid rgba(30,64,175,.1);border-radius:12px;padding:1.75rem 2rem;text-align:center;box-shadow:0 4px 16px rgba(30,58,138,.06)}
+.contact-card .icon{font-size:1.8rem;margin-bottom:.75rem}
+.contact-card h4{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:.6rem}
+.contact-card p{color:var(--text-light);font-size:.9rem;line-height:1.65}
+.contact-card a{color:var(--blue-dark);text-decoration:none;font-weight:500}
+.contact-card a:hover{color:var(--accent)}
+footer{background:#060d1a;padding:1.4rem 2rem;text-align:center}
+footer a{color:rgba(255,255,255,.42);text-decoration:none;font-size:.8rem;margin:0 .8rem}
+footer a:hover{color:var(--accent)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.cnc-intro{grid-template-columns:1fr}}
+@media(max-width:640px){.nav-links{display:none}.hamburger{display:flex}.cnc-specs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="startseite.html" class="nav-logo">RHW Becker GmbH</a>
+    <ul class="nav-links">
+      <li><a href="startseite.html">Startseite</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="dienstleistungen.html">Dienstleistungen</a></li>
+      <li><a href="cnc.html" class="active">CNC</a></li>
+      <li><a href="news.html">News</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="startseite.html">Startseite</a>
+  <a href="leistungen.html">Leistungen</a>
+  <a href="projekte.html">Projekte</a>
+  <a href="dienstleistungen.html">Dienstleistungen</a>
+  <a href="cnc.html" class="active">CNC</a>
+  <a href="news.html">News</a>
+</div>
+<section class="hero">
+  <div class="hero-badge">Seit 2014 · Computergesteuerte Präzisionsfertigung</div>
+  <h1>CNC-Bearbeitungs&shy;zentrum</h1>
+  <p>Modernste computergesteuerte Fertigung für höchste Präzision und individuelle Lösungen – seit 2014 Teil unserer Tischlerei.</p>
+  <div class="hero-line"></div>
+</section>
+<div class="cnc-intro">
+  <div class="cnc-intro-text">
+    <h2>Präzision trifft Handwerk</h2>
+    <p>Seit der Installation unseres CNC-Bearbeitungszentrums im Jahr 2014 können wir komplexe Formen, Fräsungen und Bearbeitungen mit höchster Wiederholgenauigkeit umsetzen – die perfekte Ergänzung zu unserem traditionellen Tischlerhandwerk.</p>
+    <p>Ob filigrane Ornamente, exakte Passgenauigkeit bei Serienfertigung oder individuelle Sonderlösungen: Unser CNC-Zentrum macht es möglich. Wir freuen uns auf Ihre Anfragen – auch für Auftragsarbeiten externer Partner.</p>
+    <div class="cnc-badge-row">
+      <span class="cnc-badge">Serienfertigung</span>
+      <span class="cnc-badge">Einzelstücke</span>
+      <span class="cnc-badge">Auftragsarbeiten</span>
+    </div>
+  </div>
+  <div class="cnc-specs">
+    <div class="spec-card"><div class="label">In Betrieb seit</div><div class="value">2014</div></div>
+    <div class="spec-card"><div class="label">Bearbeitung</div><div class="value">CNC-gesteuert</div></div>
+    <div class="spec-card"><div class="label">Material</div><div class="value">Holz &amp; Derivate</div></div>
+    <div class="spec-card"><div class="label">Anfragen</div><div class="value">Willkommen</div></div>
+  </div>
+</div>
+<section class="capabilities">
+  <div class="cap-inner">
+    <h2>Was wir fertigen können</h2>
+    <div class="sub">CNC-Bearbeitungen für Tischlerei und Auftragsarbeiten</div>
+    <div class="cap-grid">
+      <div class="cap-card"><div class="icon">⬜</div><h4>Fräsarbeiten</h4><p>Präzise Fräsungen in verschiedenen Tiefen und Formen</p></div>
+      <div class="cap-card"><div class="icon">🔣</div><h4>Ornamente</h4><p>Filigranes Dekor und komplexe Muster in Holz</p></div>
+      <div class="cap-card"><div class="icon">📐</div><h4>Passgenauigkeit</h4><p>Höchste Wiederholgenauigkeit für Serienteile</p></div>
+      <div class="cap-card"><div class="icon">🪟</div><h4>Türen &amp; Fenster</h4><p>Passgenaue Rahmen- und Elementteile</p></div>
+      <div class="cap-card"><div class="icon">🗂️</div><h4>Möbelteile</h4><p>Serienteile für Einbauschränke und Möbel</p></div>
+      <div class="cap-card"><div class="icon">✉️</div><h4>Auftragsarbeiten</h4><p>Wir fertigen auch für externe Tischlereien und Betriebe</p></div>
+    </div>
+  </div>
+</section>
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-headline"><h2>CNC-Anfrage stellen</h2><p>Wir freuen uns auf Ihr Projekt.</p></div>
+    <div class="contact-card"><div class="icon">📞</div><h4>Telefon</h4><p><a href="tel:062213315731">06221 – 315731</a><br><small style="color:var(--text-light);font-size:.78rem">Mo–Do 7–16 Uhr · Fr 7–13:45 Uhr</small></p></div>
+    <div class="contact-card"><div class="icon">📍</div><h4>Adresse</h4><p><a href="https://maps.google.com/?q=Brechtelstraße+15+69126+Heidelberg" target="_blank" rel="noopener">Brechtelstraße 15<br>69126 Heidelberg</a></p></div>
+    <div class="contact-card"><div class="icon">✉️</div><h4>E-Mail</h4><p><a href="mailto:info@rhw-becker.de">info@rhw-becker.de</a></p></div>
+  </div>
+</section>
+<footer><a href="#">Kontakt</a><a href="#">Impressum</a><a href="#">Datenschutz</a></footer>
+<script>
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open')});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open')}));
+</script>
+</body>
+</html>
